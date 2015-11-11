@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     options: { },
     all: [
       'Gruntfile.js',
-      'checklist-model.js'
+      'selectlist-model.js'
     ]
   });
 

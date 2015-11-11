@@ -4,7 +4,7 @@
   "description": "AngularJS directive for list of select inputs",
   "author": "https://github.com/niklasp",
   "license": "MIT",
-  "homepage": "http://vitalets.github.io/checklist-model",
+  "homepage": "http://vitalets.github.io/selectlist-model",
   "main": "selectlist-model.js",
   "ignore": [
     "**/.*",

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist-model - AngularJS directive for list of checkboxes</title>
+    <title>selectlist-model - AngularJS directive for list of checkboxes</title>
     <!-- Bootstrap 3-->
     <link href="docs/libs/bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet" media="screen">
     <!--docs css-->
@@ -15,17 +15,17 @@
     <script src="docs/libs/google-code-prettify/run_prettify.js"></script>
     <!--app-->
     <script src="docs/app.js"></script>
-    <!--checklist-model-->
-    <script src="checklist-model.js"></script>
+    <!--selectlist-model-->
+    <script src="selectlist-model.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-8">
-          <h1 class="title">Checklist-model</h1>
+          <h1 class="title">selectlist-model</h1>
           <h1 style="margin-top: 0"><small><a href="http://angularjs.org/">AngularJS</a> directive for list of checkboxes</small></h1>
         </div>
-        <div style="padding-top: 20px; text-align: right" class="col-xs-12 col-sm-4"><a href="checklist-model.js" class="btn btn-primary topbtn"><span style="margin-right:10px" class="glyphicon glyphicon-save"></span><strong>Download</strong></a><a href="https://github.com/vitalets/checklist-model" style="margin-left: 15px;" class="btn btn-default topbtn"><strong>View on GitHub</strong></a></div>
+        <div style="padding-top: 20px; text-align: right" class="col-xs-12 col-sm-4"><a href="selectlist-model.js" class="btn btn-primary topbtn"><span style="margin-right:10px" class="glyphicon glyphicon-save"></span><strong>Download</strong></a><a href="https://github.com/vitalets/selectlist-model" style="margin-left: 15px;" class="btn btn-default topbtn"><strong>View on GitHub</strong></a></div>
       </div>
       <div class="row">
         <div class="col-xs-12"><h3 id="why-this-is-needed-">Why this is needed?</h3>
@@ -33,11 +33,11 @@
 with one model.
 But in practice we usually want one model to store array of checked values
 from several checkboxes.
-<strong>Checklist-model</strong> solves that task without additional code in controller.
+<strong>selectlist-model</strong> solves that task without additional code in controller.
 You should play with attributes of <code>&lt;input type=&quot;checkbox&quot;&gt;</code> tag:</p>
 <ol>
-<li>set <code>checklist-model</code> instead of <code>ng-model</code></li>
-<li>set <code>checklist-value</code> - what should be picked as array item</li>
+<li>set <code>selectlist-model</code> instead of <code>ng-model</code></li>
+<li>set <code>selectlist-value</code> - what should be picked as array item</li>
 </ol>
 <p>Please, try out demos below:</p>
 
@@ -52,7 +52,7 @@ You should play with attributes of <code>&lt;input type=&quot;checkbox&quot;&gt;
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="role in roles">
-  <input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role}}
+  <input type="checkbox" selectlist-model="user.roles" selectlist-value="role"> {{role}}
 </label></div>
           <script>app.controller('Ctrl1', function($scope) {
   $scope.roles = [
@@ -89,10 +89,10 @@ You should play with attributes of <code>&lt;input type=&quot;checkbox&quot;&gt;
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;role in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;user.roles&quot; checklist-value=&quot;role&quot;&gt; {{role}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;user.roles&quot; selectlist-value=&quot;role&quot;&gt; {{role}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl1', function($scope) {
   $scope.roles = [
     'guest', 
@@ -118,14 +118,14 @@ app.controller('Ctrl1', function($scope) {
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <h2 style="margin-bottom: 0">Use a function as checklist-model</h2>
+          <h2 style="margin-bottom: 0">Use a function as selectlist-model</h2>
         </div>
       </div>
       <div ng-controller="Ctrl8" class="row">
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="role in roles">
-  <input type="checkbox" checklist-model="getRoles()" checklist-value="role" ng-change="check(role, checked)"> {{role}}
+  <input type="checkbox" selectlist-model="getRoles()" selectlist-value="role" ng-change="check(role, checked)"> {{role}}
 </label></div>
           <script>app.controller('Ctrl8', function($scope) {
   $scope.roles = [
@@ -174,10 +174,10 @@ app.controller('Ctrl1', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;role in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;getRoles()&quot; checklist-value=&quot;role&quot; ng-change=&quot;check(role, checked)&quot;&gt; {{role}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;getRoles()&quot; selectlist-value=&quot;role&quot; ng-change=&quot;check(role, checked)&quot;&gt; {{role}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl8', function($scope) {
   $scope.roles = [
     'guest', 
@@ -222,7 +222,7 @@ app.controller('Ctrl8', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="role in roles">
-  <input type="checkbox" checklist-model="user.roles" checklist-value="role.id"> {{role.text}}
+  <input type="checkbox" selectlist-model="user.roles" selectlist-value="role.id"> {{role.text}}
 </label></div>
           <script>app.controller('Ctrl2', function($scope) {
   $scope.roles = [
@@ -259,10 +259,10 @@ app.controller('Ctrl8', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;role in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;user.roles&quot; checklist-value=&quot;role.id&quot;&gt; {{role.text}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;user.roles&quot; selectlist-value=&quot;role.id&quot;&gt; {{role.text}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl2', function($scope) {
   $scope.roles = [
     {id: 1, text: 'guest'},
@@ -295,7 +295,7 @@ app.controller('Ctrl2', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="role in roles">
-  <input type="checkbox" data-checklist-model="user.roles" data-checklist-value="role"> {{role.text}}
+  <input type="checkbox" data-selectlist-model="user.roles" data-selectlist-value="role"> {{role.text}}
 </label></div>
           <script>app.controller('Ctrl3', function($scope) {
   $scope.roles = [
@@ -336,10 +336,10 @@ app.controller('Ctrl2', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;role in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; data-checklist-model=&quot;user.roles&quot; data-checklist-value=&quot;role&quot;&gt; {{role.text}}
+  &lt;input type=&quot;checkbox&quot; data-selectlist-model=&quot;user.roles&quot; data-selectlist-value=&quot;role&quot;&gt; {{role.text}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl3', function($scope) {
   $scope.roles = [
     {id: 1, text: 'guest'},
@@ -376,7 +376,7 @@ app.controller('Ctrl3', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="role in roles">
-  <input type="checkbox" data-checklist-model="user.roles" data-checklist-value="role"> {{role.text}}
+  <input type="checkbox" data-selectlist-model="user.roles" data-selectlist-value="role"> {{role.text}}
 </label></div>
           <script>app.controller('Ctrl7', function($scope) {
   $scope.roles = [
@@ -410,10 +410,10 @@ app.controller('Ctrl3', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;role in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; data-checklist-model=&quot;user.roles&quot; data-checklist-value=&quot;role&quot;&gt; {{role.text}}
+  &lt;input type=&quot;checkbox&quot; data-selectlist-model=&quot;user.roles&quot; data-selectlist-value=&quot;role&quot;&gt; {{role.text}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl7', function($scope) {
   $scope.roles = [
     {id: 1, text: 'guest'}
@@ -443,7 +443,7 @@ app.controller('Ctrl7', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="(key, text) in roles">
-  <input type="checkbox" checklist-model="user.roles" checklist-value="key"> {{text}}
+  <input type="checkbox" selectlist-model="user.roles" selectlist-value="key"> {{text}}
 </label></div>
           <script>app.controller('Ctrl4', function($scope) {
   $scope.roles = {
@@ -480,10 +480,10 @@ app.controller('Ctrl7', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;(key, text) in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;user.roles&quot; checklist-value=&quot;key&quot;&gt; {{text}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;user.roles&quot; selectlist-value=&quot;key&quot;&gt; {{text}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl4', function($scope) {
   $scope.roles = {
     g: 'Guest',
@@ -516,7 +516,7 @@ app.controller('Ctrl4', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="role in roles">
-  <input type="checkbox" checklist-model="user.roles" checklist-value="role" ng-model="justAnotherCheckedVar"> {{role.text}}
+  <input type="checkbox" selectlist-model="user.roles" selectlist-value="role" ng-model="justAnotherCheckedVar"> {{role.text}}
 </label></div>
           <script>app.controller('Ctrl3a', function($scope) {
   $scope.roles = [
@@ -553,10 +553,10 @@ app.controller('Ctrl4', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;role in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;user.roles&quot; checklist-value=&quot;role&quot; ng-model=&quot;justAnotherCheckedVar&quot;&gt; {{role.text}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;user.roles&quot; selectlist-value=&quot;role&quot; ng-model=&quot;justAnotherCheckedVar&quot;&gt; {{role.text}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl3a', function($scope) {
   $scope.roles = [
     {id: 1, text: 'guest'},
@@ -589,7 +589,7 @@ app.controller('Ctrl3a', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="user in users">
-  <input type="checkbox" checklist-model="selectedUsers" checklist-value="user" checklist-comparator="compareFn"> {{user.name}}
+  <input type="checkbox" selectlist-model="selectedUsers" selectlist-value="user" selectlist-comparator="compareFn"> {{user.name}}
 </label></div>
           <script>app.controller('Ctrl6', function($scope) {
     $scope.users = [
@@ -633,10 +633,10 @@ app.controller('Ctrl3a', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;user in users&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;selectedUsers&quot; checklist-value=&quot;user&quot; checklist-comparator=&quot;compareFn&quot;&gt; {{user.name}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;selectedUsers&quot; selectlist-value=&quot;user&quot; selectlist-comparator=&quot;compareFn&quot;&gt; {{user.name}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl6', function($scope) {
     $scope.users = [
         {id: 1, name: 'Aaron'},
@@ -676,7 +676,7 @@ app.controller('Ctrl6', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="user in users">
-  <input type="checkbox" checklist-model="selectedUsers" checklist-value="user" checklist-comparator=".id"> {{user.name}}
+  <input type="checkbox" selectlist-model="selectedUsers" selectlist-value="user" selectlist-comparator=".id"> {{user.name}}
 </label></div>
           <script>app.controller('Ctrl6a', function($scope) {
     $scope.users = [
@@ -716,10 +716,10 @@ app.controller('Ctrl6', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;user in users&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-model=&quot;selectedUsers&quot; checklist-value=&quot;user&quot; checklist-comparator=&quot;.id&quot;&gt; {{user.name}}
+  &lt;input type=&quot;checkbox&quot; selectlist-model=&quot;selectedUsers&quot; selectlist-value=&quot;user&quot; selectlist-comparator=&quot;.id&quot;&gt; {{user.name}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl6a', function($scope) {
     $scope.users = [
         {id: 1, name: 'Aaron'},
@@ -755,7 +755,7 @@ app.controller('Ctrl6a', function($scope) {
         <div class="col-xs-12 col-sm-6">
           <h3>demo</h3>
           <div class="well"><label ng-repeat="(key, text) in roles">
-  <input type="checkbox" checklist-change="imChanged()" checklist-model="user.roles" checklist-value="key"> {{text}}
+  <input type="checkbox" selectlist-change="imChanged()" selectlist-model="user.roles" selectlist-value="key"> {{text}}
 </label></div>
           <script>app.controller('Ctrl5', function($scope) {
   $scope.roles = {
@@ -805,10 +805,10 @@ app.controller('Ctrl6a', function($scope) {
         <div class="col-xs-12">
           <h3>html</h3>
           <pre class="prettyprint ng-non-bindable">&lt;label ng-repeat=&quot;(key, text) in roles&quot;&gt;
-  &lt;input type=&quot;checkbox&quot; checklist-change=&quot;imChanged()&quot; checklist-model=&quot;user.roles&quot; checklist-value=&quot;key&quot;&gt; {{text}}
+  &lt;input type=&quot;checkbox&quot; selectlist-change=&quot;imChanged()&quot; selectlist-model=&quot;user.roles&quot; selectlist-value=&quot;key&quot;&gt; {{text}}
 &lt;/label&gt;</pre>
           <h3>js</h3>
-          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;checklist-model&quot;]);
+          <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;selectlist-model&quot;]);
 app.controller('Ctrl5', function($scope) {
   $scope.roles = {
     g: 'Guest',
@@ -846,7 +846,7 @@ app.controller('Ctrl5', function($scope) {
         </div>
       </div>
       <footer>
-        <hr><p>If you have question or idea please feel free to <a href="https://github.com/vitalets/checklist-model/issues">open issue on github</a>.
+        <hr><p>If you have question or idea please feel free to <a href="https://github.com/vitalets/selectlist-model/issues">open issue on github</a>.
 &copy; <a href="https://github.com/vitalets">Vitaliy Potapov</a> 2013. Released under the MIT license.</p>
 
       </footer>

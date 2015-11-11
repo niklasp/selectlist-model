@@ -1,4 +1,4 @@
-var app = angular.module("app", ["checklist-model"]);
+var app = angular.module("app", ["selectlist-model"]);
 
 // links: http://plnkr.co/edit/3YNLsyoG4PIBW6Kj7dRK?p=preview
 // links: http://stackoverflow.com/questions/14514461/how-can-angularjs-bind-to-list-of-checkbox-values
