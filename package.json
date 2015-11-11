@@ -1,24 +1,28 @@
 {
-  "name": "checklist-model",
-  "description": "AngularJS directive for list of checkboxes",
+  "name": "selectlist-model",
+  "description": "AngularJS directive for list of select inputs",
   "license": "MIT",
   "version": "0.6.0",
-  "homepage": "http://vitalets.github.io/checklist-model",
+  "homepage": "https://github.com/niklasp/selectlist-model",
   "author": {
-    "name": "Vitaliy Potapov",
-    "email": "noginsk@rambler.ru"
+    "name": "Niklas P",
+    "email": "contact@niklasplessing.net"
   },
   "contributors": [
   {
     "name": "Adrian Ber",
     "email": "beradrian@yahoo.com"
-  }
+  },
+  {
+    "name": "Vitaliy Potapov",
+    "email": "noginsk@rambler.ru"
+  }  
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/vitalets/checklist-model.git"
+    "url": "git://github.com/niklasp/selectlist-model.git"
   },
-  "main": "checklist-model.js",
+  "main": "selectlist-model.js",
   "engines": {
     "node": ">= 0.8.0"
   },
