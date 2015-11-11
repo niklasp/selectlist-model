@@ -81,7 +81,10 @@ angular.module('selectlist-model', ['ngUnderscore'])
       var current = getter(scope.$parent);
       if (angular.isFunction(setter)) {
         if (contains(current, oldValue, comparator)) {
-          setter(scope.$parent, add(current, newValue, comparator));
+          //never add null values (empty select option)
+          if (newValue !== null) {
+            setter(scope.$parent, add(current, newValue, comparator));
+          }
           setter(scope.$parent, remove(current, oldValue, comparator));
           // setter(scope.$parent, remove(current, oldValue, comparator));
         } else {
@@ -97,7 +100,6 @@ angular.module('selectlist-model', ['ngUnderscore'])
     // declare one function to be used for both $watch functions
     function setChecked(newArr, oldArr) {
       //scope[attrs.ngModel] = contains(newArr, value, comparator);
-      console.log('scope', scope.$parent.atr.children);
       var elementsChildren = scope.$parent.atr.children;
       //if the children contain the value in the array, set it
       
