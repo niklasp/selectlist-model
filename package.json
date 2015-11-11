@@ -2,21 +2,12 @@
   "name": "selectlist-model",
   "description": "AngularJS directive for list of select inputs",
   "license": "MIT",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "https://github.com/niklasp/selectlist-model",
-  "author": {
-    "name": "Niklas P",
-    "email": "contact@niklasplessing.net"
-  },
+  "author": "Niklas P <contact@niklasplessing.net>",
   "contributors": [
-  {
-    "name": "Adrian Ber",
-    "email": "beradrian@yahoo.com"
-  },
-  {
-    "name": "Vitaliy Potapov",
-    "email": "noginsk@rambler.ru"
-  }  
+    "Adrian Ber <beradrian@yahoo.com>",
+    "Vitaliy Potapov <noginsk@rambler.ru>"
   ],
   "repository": {
     "type": "git",
@@ -44,5 +35,19 @@
     "grunt-jsdoc": "~0.4.1",
     "grunt-shell": "~0.5.0",
     "grunt-bump": "0.0.13"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/niklasp/selectlist-model/issues"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "seleclist",
+    "angular"
+  ]
 }

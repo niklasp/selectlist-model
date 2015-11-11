@@ -5,8 +5,8 @@
  * License: MIT http://opensource.org/licenses/MIT
  */
 
-angular.module('selectlist-model', [])
-.directive('selectlistModel', ['$parse', '$compile', function($parse, $compile) {
+angular.module('selectlist-model', ['ngUnderscore'])
+.directive('selectlistModel', ['$parse', '$compile', 'underscore', function($parse, $compile, underscore) {
   // contains
   function contains(arr, item, comparator) {
     if (angular.isArray(arr)) {
@@ -80,10 +80,12 @@ angular.module('selectlist-model', [])
       } 
       var current = getter(scope.$parent);
       if (angular.isFunction(setter)) {
-        if (newValue === true) {
-          setter(scope.$parent, add(current, value, comparator));
+        if (contains(current, oldValue, comparator)) {
+          setter(scope.$parent, add(current, newValue, comparator));
+          setter(scope.$parent, remove(current, oldValue, comparator));
+          // setter(scope.$parent, remove(current, oldValue, comparator));
         } else {
-          setter(scope.$parent, remove(current, value, comparator));
+          setter(scope.$parent, add(current, newValue, comparator));
         }
       }
 
@@ -94,7 +96,17 @@ angular.module('selectlist-model', [])
     
     // declare one function to be used for both $watch functions
     function setChecked(newArr, oldArr) {
-        scope[attrs.ngModel] = contains(newArr, value, comparator);
+      //scope[attrs.ngModel] = contains(newArr, value, comparator);
+      console.log('scope', scope.$parent.atr.children);
+      var elementsChildren = scope.$parent.atr.children;
+      //if the children contain the value in the array, set it
+      
+      var selecOptionIds = underscore.pluck(elementsChildren, 'id');
+      for (var i = 0; i < selecOptionIds.length; i++) {
+        if (contains(newArr, selecOptionIds[i], comparator)) {
+          scope[attrs.ngModel] = selecOptionIds[i];
+        }
+      }
     }
 
     // watch original model change
@@ -112,18 +124,14 @@ angular.module('selectlist-model', [])
     terminal: true,
     scope: true,
     compile: function(tElement, tAttrs) {
-      if ((tElement[0].tagName !== 'INPUT' || tAttrs.type !== 'checkbox') && (tElement[0].tagName !== 'MD-CHECKBOX') && (!tAttrs.btnCheckbox)) {
-        throw 'selectlist-model should be applied to `input[type="checkbox"]` or `md-checkbox`.';
-      }
-
-      if (!tAttrs.selectlistValue && !tAttrs.value) {
-        throw 'You should provide `value` or `selectlist-value`.';
+      if ((tElement[0].tagName !== 'SELECT' )) {
+        throw 'selectlist-model should be applied to `<select>` .';
       }
 
       // by default ngModel is 'checked', so we set it if not specified
       if (!tAttrs.ngModel) {
         // local scope var storing individual checkbox model
-        tAttrs.$set("ngModel", "checked");
+        tAttrs.$set("ngModel", "local");
       }
 
       return postLinkFn;
