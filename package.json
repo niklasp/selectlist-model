@@ -2,7 +2,7 @@
   "name": "selectlist-model",
   "description": "AngularJS directive for list of select inputs",
   "license": "MIT",
-  "version": "0.6.1",
+  "version": "0.8.0",
   "homepage": "https://github.com/niklasp/selectlist-model",
   "author": "Niklas P <contact@niklasplessing.net>",
   "contributors": [
