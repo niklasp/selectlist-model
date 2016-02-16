@@ -1,6 +1,6 @@
 /**
  * selectlist-model
- * AngularJS directive for list of checkboxes
+ * AngularJS directive for selectlist
  * https://github.com/vitalets/selectlist-model
  * License: MIT http://opensource.org/licenses/MIT
  */
@@ -26,7 +26,7 @@ angular.module('selectlist-model', ['ngUnderscore'])
           arr.push(item);
       }
     return arr;
-  }  
+  }
 
   // remove
   function remove(arr, item, comparator) {
@@ -47,7 +47,7 @@ angular.module('selectlist-model', ['ngUnderscore'])
     var selectlistModel = attrs.selectlistModel;
     attrs.$set("selectlistModel", null);
     // compile with `ng-model` pointing to `checked`
-    $compile(elem)(scope);
+    var compiledElem = $compile(elem)(scope);
     attrs.$set("selectlistModel", selectlistModel);
 
     // getter / setter for original model
@@ -57,6 +57,7 @@ angular.module('selectlist-model', ['ngUnderscore'])
 
     // value added to list
     var value = attrs.selectlistValue ? $parse(attrs.selectlistValue)(scope.$parent) : attrs.value;
+    var options = $parse(attrs.selectlistOptions)(scope.$parent);
 
 
     var comparator = angular.equals;
@@ -67,7 +68,7 @@ angular.module('selectlist-model', ['ngUnderscore'])
         comparator = function (a, b) {
           return a[comparatorExpression] === b[comparatorExpression];
         };
-        
+
       } else {
         comparator = $parse(attrs.selectlistComparator)(scope.$parent);
       }
@@ -75,13 +76,16 @@ angular.module('selectlist-model', ['ngUnderscore'])
 
     // watch UI checked change
     scope.$watch(attrs.ngModel, function(newValue, oldValue) {
-      if (newValue === oldValue) { 
+      if (newValue === oldValue) {
         return;
-      } 
+      }
       var current = getter(scope.$parent);
+
       if (angular.isFunction(setter)) {
+
         if (contains(current, oldValue, comparator)) {
           //never add null values (empty select option)
+
           if (newValue !== null) {
             setter(scope.$parent, add(current, newValue, comparator));
           }
@@ -96,17 +100,20 @@ angular.module('selectlist-model', ['ngUnderscore'])
         selectlistChange(scope);
       }
     });
-    
+
     // declare one function to be used for both $watch functions
     function setChecked(newArr, oldArr) {
+
+
       //scope[attrs.ngModel] = contains(newArr, value, comparator);
-      var elementsChildren = scope.$parent.atr.children;
+      var elementsChildren = options;
+
       //if the children contain the value in the array, set it
-      
-      var selecOptionIds = underscore.pluck(elementsChildren, 'id');
-      for (var i = 0; i < selecOptionIds.length; i++) {
-        if (contains(newArr, selecOptionIds[i], comparator)) {
-          scope[attrs.ngModel] = selecOptionIds[i];
+
+      var selectOptionIds = underscore.pluck(elementsChildren, 'id');
+      for (var i = 0; i < selectOptionIds.length; i++) {
+        if (contains(newArr, selectOptionIds[i], comparator)) {
+          scope[attrs.ngModel] = selectOptionIds[i];
         }
       }
     }
